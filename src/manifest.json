@@ -1,0 +1,504 @@
+{
+  "inputs": {
+    "version": {
+      "description": "output the version number",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "no-default-rc": {
+      "description": "prevent Yarn from automatically detecting yarnrc and npmrc files",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "use-yarnrc": {
+      "description": "specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc)",
+      "required": false
+    },
+    "verbose": {
+      "description": "output verbose messages on internal operations",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "offline": {
+      "description": "trigger an error if any required dependencies are not available in local cache",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "prefer-offline": {
+      "description": "use network only if dependencies are not available in local cache",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "enable-pnp": {
+      "description": "enable the Plug'n'Play installation",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "disable-pnp": {
+      "description": "disable the Plug'n'Play installation",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "strict-semver": {
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "json": {
+      "descriptions": "format Yarn log messages as lines of JSON (see jsonlines.org)",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "ignore-scripts": {
+      "descriptions": "don't run lifecycle scripts",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "har": {
+      "descriptions": "save HAR output of network traffic",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "ignore-platform": {
+      "descriptions": "ignore platform checks",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "ignore-engines": {
+      "descriptions": "ignore engines check",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "ignore-optional": {
+      "descriptions": "ignore optional dependencies",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "force": {
+      "descriptions": "install and build packages even if they were built before, overwrite lockfile",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "skip-integrity-check": {
+      "descriptions": "run install without checking if node_modules is installed",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "check-files": {
+      "descriptions": "install will verify file tree of packages for consistency",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "no-bin-links": {
+      "descriptions": "don't generate bin links when setting up packages",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "flat": {
+      "descriptions": "only allow one version of a package",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "production": {
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "no-lockfile": {
+      "description": "don't read or generate a lockfile",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "non-interactive": {
+      "description": "do not show interactive prompts",
+      "required": false,
+      "default": true,
+      "boolean": true
+    },
+    "pure-lockfile": {
+      "description": "don't generate a lockfile",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "frozen-lockfile": {
+      "description": "don't generate a lockfile and fail if an update is needed",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "update-checksums": {
+      "description": "update package checksums from current repository",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "link-duplicates": {
+      "description": "create hardlinks to the repeated modules in node_modules",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "link-folder": {
+      "description": "specify a custom folder to store global links",
+      "required": false
+    },
+    "global-folder": {
+      "description": "specify a custom folder to store global packages",
+      "required": false
+    },
+    "modules-folder": {
+      "description": "rather than installing modules into the node_modules folder relative to the cwd, output them here",
+      "required": false
+    },
+    "preferred-cache-folder": {
+      "description": "specify a custom folder to store the yarn cache if possible",
+      "required": false
+    },
+    "cache-folder": {
+      "description": "specify a custom folder that must be used to store the yarn cache",
+      "required": false
+    },
+    "mutex": {
+      "description": "use a mutex to ensure only one yarn instance is executing",
+      "required": false
+    },
+    "no-emoji": {
+      "description": "disabled emoji in output",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "silent": {
+      "description": "skip Yarn console logs, other types of logs (script output) will be printed",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "cwd": {
+      "description": "working directory to use",
+      "required": false
+    },
+    "proxy": {
+      "required": false
+    },
+    "https-proxy": {
+      "required": false
+    },
+    "registry": {
+      "description": "override configuration registry",
+      "required": false
+    },
+    "no-progress": {
+      "description": "disable progress bar",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "network-concurrency": {
+      "description": "maximum number of concurrent network requests",
+      "required": false
+    },
+    "network-timeout": {
+      "description": "TCP timeout for network requests",
+      "required": false
+    },
+    "no-scripts-prepend-node-path": {
+      "description": "don't prepend the node executable dir to the PATH in scripts"
+    },
+    "no-node-version-check": {
+      "description": "do not warn when using a potentially unsupported Node version",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "focus": {
+      "description": "Focus on a single workspace by installing remote copies of its sibling workspaces",
+      "required": false,
+      "default": false,
+      "boolean": true
+    },
+    "otp": {
+      "description": "one-time password for two factor authentication",
+      "required": false
+    },
+    "help": {
+      "description": "output usage information",
+      "required": false,
+      "default": false,
+      "boolean": true
+    }
+  },
+  "commands": {
+    "add": {
+      "description": "Installs a package and any packages that it depends on",
+      "inputs": {
+        "ignore-workspace-root-check": {
+          "description": "required to run yarn add inside a workspace root",
+          "required": false,
+          "default": false,
+          "boolean": true
+        },
+        "dev": {
+          "description": "save package to your `devDependencies`",
+          "required": false,
+          "default": false,
+          "boolean": true
+        },
+        "peer": {
+          "description": "save package to your `peerDependencies`",
+          "required": false,
+          "default": false,
+          "boolean": true
+        },
+        "optional": {
+          "description": "save package to your `optionalDependencies`",
+          "required": false,
+          "default": false,
+          "boolean": true
+        },
+        "exact": {
+          "description": "install exact version",
+          "required": false,
+          "default": false,
+          "boolean": true
+        },
+        "tilde": {
+          "description": "install most recent release with the same minor version",
+          "required": false,
+          "default": false,
+          "boolean": true
+        },
+        "audit": {
+          "description": "Run vulnerability audit on installed packages",
+          "required": false,
+          "default": false,
+          "boolean": true
+        },
+        "packages": {
+          "required": true,
+          "anonymous": true,
+          "default": []
+        }
+      }
+    },
+    "audit": {
+      "description": "Checks for known security issues with the installed packages",
+      "inputs": {
+        "summary": {
+          "description": "Only print the summary",
+          "required": false,
+          "default": true
+        },
+        "groups": {
+          "description": "Only audit dependencies from listed groups. Default: devDependencies, dependencies, optionalDependencies (default: devDependencies,dependencies,optionalDependencies)",
+          "required": false
+        },
+        "level": {
+          "description": "Only print advisories with severity greater than or equal to one of the following: info|low|moderate|high|critical",
+          "required": false,
+          "default": "info"
+        }
+      }
+    },
+    "autoclean": {
+      "description": "Cleans and removes unnecessary files from package dependencies",
+      "inputs": {
+        "init": {
+          "description": "Create .yarnclean file with the default entries",
+          "default": false,
+          "boolean": true,
+          "required": false
+        },
+        "force": {
+          "description": "Run autoclean using the existing .yarnclean file",
+          "default": false,
+          "boolean": true,
+          "required": false
+        }
+      }
+    },
+    "bin": {
+      "description": "Displays the location of the yarn bin folder"
+    },
+    "cache": {
+      "description": "Yarn cache list will print out every cached package"
+    },
+    "check": {
+      "description": "Yarn cache list will print out every cached package",
+      "inputs": {
+        "integrity": {
+          "required": false,
+          "default": false,
+          "boolean": true
+        },
+        "verify-tree": {
+          "required": false,
+          "default": false,
+          "boolean": true
+        }
+      }
+    },
+    "config": {
+      "description": "Manages the yarn configuration files",
+      "commands": {
+        "set": {
+          "inputs": {
+            "input": {
+              "required": true,
+              "anonymous": true,
+              "default": []
+            }
+          }
+        },
+        "get": {
+          "inputs": {
+            "input": {
+              "required": true,
+              "anonymous": true
+            }
+          }
+        },
+        "delete": {
+          "inputs": {
+            "input": {
+              "required": true,
+              "anonymous": true
+            }
+          }
+        },
+        "list": {},
+        "current": {}
+      }
+    },
+    "create": {
+      "description": "Creates new projects from any create-* starter kits",
+      "inputs": {
+        "starter-kit": {
+          "required": true,
+          "anonymous": true
+        }
+      }
+    },
+    "exec": {
+      "inputs": {
+        "cmd": {
+          "required": true,
+          "anonymous": true
+        }
+      }
+    },
+    "generate-lock-entry": {
+      "description": "Generates a lock file entry",
+      "inputs": {
+        "use-manifest": {
+          "required": false
+        },
+        "resolved": {
+          "required": false
+        },
+        "registry": {
+          "required": false
+        }
+      }
+    },
+    "global": {
+      "description": "Installs packages globally on your operating system",
+      "inputs": {
+        "prefix": {
+          "description": "bin prefix to use to install binaries",
+          "required": false
+        },
+        "latest": {
+          "description": "upgrade to the latest version of packages",
+          "required": false,
+          "default": false,
+          "boolean": true
+        },
+        "command": {
+          "description": "add|bin|dir|ls|list|remove|upgrade|upgrade-interactive",
+          "anonymous": true,
+          "required": true
+        }
+      }
+    },
+    "import": {
+      "description": "Generates yarn.lock from an npm package-lock.json file or an existing npm-installed node_modules folder"
+    },
+    "info": {
+      "description": "Shows information about a package",
+      "inputs": {
+        "package": {
+          "anonymous": true,
+          "required": true
+        }
+      }
+    },
+    "init": {
+      "description": "Interactively creates or updates a package.json file",
+      "inputs": {
+        "yes": {
+          "description": "use default options",
+          "required": false,
+          "default": false,
+          "boolean": true
+        },
+        "private": {
+          "description": "use default options and private true",
+          "required": false,
+          "default": false,
+          "boolean": true
+        }
+      }
+    },
+    "install": {
+      "description": "Yarn install is used to install all dependencies for a project",
+      "inputs": {
+        "audit": {
+          "description": "Run vulnerability audit on installed packages",
+          "required": false,
+          "default": false,
+          "boolean": true
+        }
+      }
+    },
+    "licenses": {
+      "description": "Lists licenses for installed packages"
+    },
+    "link": {
+      "description": "Symlink a package folder during development"
+    },
+    "list": {
+      "description": "Lists installed packages",
+      "inputs": {
+        "depth": {
+          "description": "Limit the depth of the shown dependencies",
+          "required": false
+        },
+        "pattern": {
+          "description": "Filter dependencies by pattern",
+          "required": false
+        }
+      }
+    }
+  }
+}
