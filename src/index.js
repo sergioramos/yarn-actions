@@ -5,7 +5,7 @@ const Del = require('del');
 const Execa = require('execa');
 const Mkdir = require('make-dir');
 const { write } = require('node-yaml');
-const { join, relative } = require('path');
+const { join } = require('path');
 
 const { author } = require('../package.json');
 const { commands, inputs: globalInputs } = require('./manifest.json');
@@ -101,6 +101,7 @@ Main(async () => {
   const dflt = Object.keys(commands).find(name => commands[name].default);
   return handleCommand({
     ...commands[dflt],
+    name: dflt,
     cwd: join(__dirname, '..', 'fallback'),
     yml: {
       name: 'yarn',
