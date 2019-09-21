@@ -7,5 +7,6 @@ jobs:
     - uses: actions/setup-node@master
       with:
         node-version: '12.x'
-    - run: 'yarn install --frozen-lockfile --non-interactive'
-    - uses: ./list
+    - uses: ./
+      with:
+        frozen-lockfile: true
