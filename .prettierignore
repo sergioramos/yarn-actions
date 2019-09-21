@@ -75,6 +75,7 @@ check/
 config/
 create/
 exec/
+fallback/
 generate-lock-entry/
 global/
 import/

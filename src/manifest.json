@@ -1,4 +1,5 @@
 {
+  "name": "yarn",
   "inputs": {
     "version": {
       "description": "output the version number",
@@ -472,6 +473,7 @@
     },
     "install": {
       "description": "Yarn install is used to install all dependencies for a project",
+      "default": true,
       "inputs": {
         "audit": {
           "description": "Run vulnerability audit on installed packages",

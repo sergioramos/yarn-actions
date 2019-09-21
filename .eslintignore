@@ -61,3 +61,24 @@ _env*ac
 *.toml
 *.jar
 *.zip
+
+### Application Specific ###
+add/*
+audit/*
+autoclean/*
+bin/*
+cache/*
+check/*
+config/*
+create/*
+exec/*
+fallback/*
+generate-lock-entry/*
+global/*
+import/*
+info/*
+init/*
+install/*
+licenses/*
+link/*
+list/*

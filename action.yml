@@ -1,6 +1,6 @@
-name: yarn info
+name: yarn
 author: Sérgio Ramos <sergio@yld.io>
-description: Shows information about a package
+description: "\U0001F4E6\U0001F408 Fast, reliable, and secure dependency management"
 inputs:
   version:
     description: output the version number
@@ -167,8 +167,10 @@ inputs:
     description: output usage information
     required: false
     default: false
-  package:
-    required: true
+  audit:
+    description: Run vulnerability audit on installed packages
+    required: false
+    default: false
 outputs:
   stdout:
     description: process stdout
@@ -176,7 +178,7 @@ outputs:
     description: process stderr
 runs:
   using: node12
-  main: index.js
+  main: fallback/index.js
 branding:
   icon: package
   color: blue

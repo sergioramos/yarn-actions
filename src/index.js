@@ -5,7 +5,7 @@ const Del = require('del');
 const Execa = require('execa');
 const Mkdir = require('make-dir');
 const { write } = require('node-yaml');
-const { join } = require('path');
+const { join, relative } = require('path');
 
 const { author } = require('../package.json');
 const { commands, inputs: globalInputs } = require('./manifest.json');
@@ -27,7 +27,7 @@ const parseInputs = (inputs = {}) => {
 };
 
 const handleCommand = async cmd => {
-  const { name, description, inputs: cmdInputs, cwd } = cmd;
+  const { name, description, inputs: cmdInputs, cwd, yml = {} } = cmd;
   const allInputs = Object.assign({}, globalInputs || {}, cmdInputs || {});
 
   const inputs = Object.keys(allInputs).reduce((inputs = {}, name) => {
@@ -59,12 +59,12 @@ const handleCommand = async cmd => {
   );
 
   await write(
-    join(cwd, 'action.yml'),
+    join(yml.path || cwd, 'action.yml'),
     parse(
       stringify({
-        name: `yarn ${name}`,
+        name: yml.name || `yarn ${name}`,
         author,
-        description,
+        description: yml.description || description,
         inputs: parseInputs(inputs),
         outputs: {
           stdout: {
@@ -76,7 +76,11 @@ const handleCommand = async cmd => {
         },
         runs: {
           using: 'node12',
-          main: 'index.js',
+          main: yml.main || 'index.js',
+        },
+        branding: {
+          icon: 'package',
+          color: 'blue',
         },
       }),
     ),
@@ -86,11 +90,23 @@ const handleCommand = async cmd => {
 };
 
 Main(async () => {
-  return ForEach(Object.keys(commands), name => {
+  await ForEach(Object.keys(commands), name => {
     return handleCommand({
       name,
       ...commands[name],
       cwd: join(__dirname, '..', name),
     });
+  });
+
+  const dflt = Object.keys(commands).find(name => commands[name].default);
+  return handleCommand({
+    ...commands[dflt],
+    cwd: join(__dirname, '..', 'fallback'),
+    yml: {
+      name: 'yarn',
+      description: '📦🐈 Fast, reliable, and secure dependency management',
+      path: join(__dirname, '..'),
+      main: 'fallback/index.js',
+    },
   });
 });
