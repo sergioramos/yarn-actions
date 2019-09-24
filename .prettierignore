@@ -75,7 +75,6 @@ check/
 config/
 create/
 exec/
-fallback/
 generate-lock-entry/
 global/
 import/
@@ -85,3 +84,5 @@ install/
 licenses/
 link/
 list/
+_fallback/
+_handler/

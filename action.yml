@@ -178,7 +178,7 @@ outputs:
     description: process stderr
 runs:
   using: node12
-  main: fallback/index.js
+  main: _fallback/index.js
 branding:
   icon: package
   color: blue

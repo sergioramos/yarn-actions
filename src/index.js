@@ -27,7 +27,7 @@ const parseInputs = (inputs = {}) => {
 };
 
 const handleCommand = async cmd => {
-  const { name, description, inputs: cmdInputs, cwd, yml = {} } = cmd;
+  const { name, description, inputs: cmdInputs, cwd, ext, yml = {} } = cmd;
   const allInputs = Object.assign({}, globalInputs || {}, cmdInputs || {});
 
   const inputs = Object.keys(allInputs).reduce((inputs = {}, name) => {
@@ -51,7 +51,15 @@ const handleCommand = async cmd => {
 
   await Execa(
     'ncc',
-    ['build', join(cwd, 'index.js'), '--out', cwd, '--source-map'],
+    [
+      'build',
+      join(cwd, 'index.js'),
+      '--out',
+      cwd,
+      '--source-map',
+      '--external',
+      ext,
+    ],
     {
       stdio: 'inherit',
       preferLocal: true,
@@ -90,10 +98,28 @@ const handleCommand = async cmd => {
 };
 
 Main(async () => {
+  await Del(join(__dirname, '../_handler'));
+
+  await Execa(
+    'ncc',
+    [
+      'build',
+      join(__dirname, 'handler.js'),
+      '--out',
+      join(__dirname, '../_handler'),
+      '--source-map',
+    ],
+    {
+      stdio: 'inherit',
+      preferLocal: true,
+    },
+  );
+
   await ForEach(Object.keys(commands), name => {
     return handleCommand({
       name,
       ...commands[name],
+      ext: '../_handler',
       cwd: join(__dirname, '..', name),
     });
   });
@@ -102,12 +128,13 @@ Main(async () => {
   return handleCommand({
     ...commands[dflt],
     name: dflt,
-    cwd: join(__dirname, '..', 'fallback'),
+    cwd: join(__dirname, '..', '_fallback'),
+    ext: '../_handler',
     yml: {
       name: 'yarn actions',
       description: '📦🐈 Fast, reliable, and secure dependency management',
       path: join(__dirname, '..'),
-      main: 'fallback/index.js',
+      main: '_fallback/index.js',
     },
   });
 });
