@@ -5,38 +5,52 @@ const IsString = require('lodash.isstring');
 const IsUndefined = require('lodash.isundefined');
 const Unparse = require('yargs-unparser');
 
+const handleNamedInput = (args = [], { name, ...input }) => {
+  const { dflt, required = false, flag = false, split = false } = input;
+
+  const strValue = getInput(name, { required, default: dflt });
+  const isString = IsString(strValue) && strValue.length;
+  const parsedVal = flag && isString ? JSON.parse(strValue) : strValue;
+  const value =
+    !split || !isString
+      ? parsedVal
+      : parsedVal
+          .split(/,/gi)
+          .map(str => str.trim())
+          .filter(Boolean);
+
+  return (flag && !value) || (!flag && !isString)
+    ? args
+    : args.concat(Unparse({ [name]: value }));
+};
+
+const handleAnonymousInput = (args = [], input) => {
+  const { name, dflt, required = false } = input;
+  const value = getInput(name, { required, default: dflt });
+  return IsUndefined(value) ? args : args.concat(ForceArray(value));
+};
+
 module.exports = async ({ name, inputs }) => {
   const args = ForceArray(
     Object.values(inputs)
       .filter(({ anonymous }) => !anonymous)
-      .reduce((args = [], { boolean, required, name, ...input }) => {
-        const strValue = getInput(name, { required, default: input.default });
-        const isString = IsString(strValue) && strValue.length;
-        const value = boolean && isString ? JSON.parse(strValue) : strValue;
-
-        return (boolean && !value) || (!boolean && !isString)
-          ? args
-          : args.concat(Unparse({ [name]: value }));
-      }, []),
+      .reduce(handleNamedInput, []),
   );
 
   const anonymous = ForceArray(
     Object.values(inputs)
       .filter(({ anonymous }) => anonymous)
-      .reduce((args, { required, name, ...input }) => {
-        const value = getInput(name, { required, default: input.default });
-        return IsUndefined(value) ? args : args.concat(ForceArray(value));
-      }, []),
+      .reduce(handleAnonymousInput, []),
   );
 
-  console.log('yarn', ...args.concat(anonymous).concat(name));
-  const { exitCode, stdout, stderr } = await Execa(
-    'yarn',
-    args.concat(anonymous).concat(name),
-    {
-      stdio: 'inherit',
-    },
-  );
+  const command = ForceArray(name)
+    .concat(anonymous)
+    .concat(args);
+
+  console.log('yarn', ...command);
+  const { exitCode, stdout, stderr } = await Execa('yarn', command, {
+    stdio: 'inherit',
+  });
 
   setOutput('stdout', stdout);
   setOutput('stderr', stderr);

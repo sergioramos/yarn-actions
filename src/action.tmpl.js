@@ -1,5 +1,5 @@
 const Main = require('apr-main');
-const Exec = require('../_handler');
+const Exec = require('<%handler%>');
 const manifest = require('./manifest.json');
 
 Main(async () => {

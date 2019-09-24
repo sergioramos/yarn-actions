@@ -150,6 +150,7 @@ inputs:
     required: false
   no-scripts-prepend-node-path:
     description: don't prepend the node executable dir to the PATH in scripts
+    required: false
   no-node-version-check:
     description: do not warn when using a potentially unsupported Node version
     required: false
@@ -196,8 +197,8 @@ inputs:
     required: false
     default: false
   packages:
+    description: Comma separated list of packages to install
     required: true
-    default: []
 outputs:
   stdout:
     description: process stdout

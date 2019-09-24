@@ -150,6 +150,7 @@ inputs:
     required: false
   no-scripts-prepend-node-path:
     description: don't prepend the node executable dir to the PATH in scripts
+    required: false
   no-node-version-check:
     description: do not warn when using a potentially unsupported Node version
     required: false
@@ -165,10 +166,6 @@ inputs:
     required: false
   help:
     description: output usage information
-    required: false
-    default: false
-  audit:
-    description: Run vulnerability audit on installed packages
     required: false
     default: false
 outputs:

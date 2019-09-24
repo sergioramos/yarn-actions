@@ -5,29 +5,32 @@ const Del = require('del');
 const Execa = require('execa');
 const Mkdir = require('make-dir');
 const { write } = require('node-yaml');
-const { join } = require('path');
+const { join, relative } = require('path');
 
 const { author } = require('../package.json');
 const { commands, inputs: globalInputs } = require('./manifest.json');
+const ROOT = join(__dirname, '..');
 const { parse, stringify } = JSON;
 
 const parseInputs = (inputs = {}) => {
   return Object.keys(inputs).reduce((sum = {}, name) => {
-    const { description, required, ...input } = inputs[name];
+    const { description, required = false, dflt } = inputs[name];
     return Object.assign({}, sum, {
       [name]: parse(
         stringify({
           description,
           required,
-          default: input.default,
+          default: dflt,
         }),
       ),
     });
   }, {});
 };
 
-const handleCommand = async cmd => {
-  const { name, description, inputs: cmdInputs, cwd, ext, yml = {} } = cmd;
+const handleCommand = async (cmd, parent = []) => {
+  const { name, description, cwd, ext, yml = {} } = cmd;
+  const { commands = [], inputs: cmdInputs } = cmd;
+
   const allInputs = Object.assign({}, globalInputs || {}, cmdInputs || {});
 
   const inputs = Object.keys(allInputs).reduce((inputs = {}, name) => {
@@ -41,12 +44,13 @@ const handleCommand = async cmd => {
 
   await writeFile(
     join(cwd, 'manifest.json'),
-    stringify({ name, inputs }, null, 2),
+    stringify({ name: parent.concat(name).filter(Boolean), inputs }, null, 2),
   );
 
+  const actionjs = await readFile(join(__dirname, 'action.tmpl.js'), 'utf-8');
   await writeFile(
     join(cwd, 'index.js'),
-    await readFile(join(__dirname, 'action.tmpl.js')),
+    actionjs.replace('<%handler%>', relative(cwd, join(ROOT, '_handler'))),
   );
 
   await Execa(
@@ -95,6 +99,18 @@ const handleCommand = async cmd => {
   );
 
   await Del(join(cwd, 'manifest.json'));
+
+  await ForEach(Object.keys(commands), cmd => {
+    return handleCommand(
+      {
+        name: cmd,
+        ...commands[cmd],
+        ext: '../../_handler',
+        cwd: join(cwd, cmd),
+      },
+      [name],
+    );
+  });
 };
 
 Main(async () => {

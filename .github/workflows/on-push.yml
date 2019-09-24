@@ -10,3 +10,10 @@ jobs:
     - uses: ./
       with:
         frozen-lockfile: true
+    - uses: ./config/set
+      with:
+        key: a
+        value: b
+    - uses: ./config/get
+      with:
+        input: a
