@@ -20,6 +20,7 @@
   "devDependencies": {
     "@zeit/ncc": "^0.20.5",
     "apr-for-each": "^3.0.3",
+    "apr-main": "^4.0.3",
     "del": "^5.1.0",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",

@@ -144,7 +144,7 @@ Main(async () => {
     name: dflt,
     cwd: join(__dirname, '..', '_fallback'),
     yml: {
-      name: 'yarn actions',
+      name: 'yarn actions (yaml)',
       description: '📦🐈 Fast, reliable, and secure dependency management',
       path: join(__dirname, '..'),
       main: '_fallback/index.js',

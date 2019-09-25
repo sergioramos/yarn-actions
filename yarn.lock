@@ -199,6 +199,13 @@ apr-for-each@^3.0.3:
     apr-engine-each "^3.0.3"
     lodash.defaults "^4.2.0"
 
+apr-main@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/apr-main/-/apr-main-4.0.3.tgz#a069262ab87110ccadb61c0252754d2a1c01503a"
+  integrity sha1-oGkmKrhxEMytthwCUnVNKhwBUDo=
+  dependencies:
+    is-promise "^2.1.0"
+
 argparse@^1.0.7:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/argparse/-/argparse-1.0.10.tgz#bcd6791ea5ae09725e17e5ad988134cd40b3d911"
