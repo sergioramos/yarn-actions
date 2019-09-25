@@ -178,4 +178,4 @@ runs:
   main: _fallback/index.js
 branding:
   icon: package
-  color: blue
+  color: purple

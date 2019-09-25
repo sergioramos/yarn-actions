@@ -181,4 +181,4 @@ runs:
   main: index.js
 branding:
   icon: package
-  color: blue
+  color: purple

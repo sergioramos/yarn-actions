@@ -76,7 +76,7 @@ const handleCommand = async (cmd, parent = []) => {
         },
         branding: {
           icon: 'package',
-          color: 'blue',
+          color: 'purple',
         },
       }),
     ),
