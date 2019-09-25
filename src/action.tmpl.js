@@ -1,8 +1,10 @@
-const Main = require('apr-main');
-const Exec = require('<%handler%>');
-const manifest = require('./manifest.json');
+const Handler = require('<%handler%>');
 
-Main(async () => {
-  const exitCode = await Exec(manifest);
-  process.exit(exitCode);
-});
+const handleError = err => {
+  console.error(err);
+  process.exit(1);
+};
+
+Handler(require('./manifest.json'))
+  .then(code => process.exit(code))
+  .catch(handleError);

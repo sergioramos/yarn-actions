@@ -1,4 +1,4 @@
-name: yarn workspaces workspaces
+name: yarn workspaces unlink
 author: Sérgio Ramos <sergio@yld.io>
 description: Unlink a previously created symlink for a package
 inputs:

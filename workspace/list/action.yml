@@ -1,4 +1,4 @@
-name: yarn workspace workspace
+name: yarn workspace list
 author: Sérgio Ramos <sergio@yld.io>
 description: Lists installed packages
 inputs:

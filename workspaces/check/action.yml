@@ -1,4 +1,4 @@
-name: yarn workspaces workspaces
+name: yarn workspaces check
 author: Sérgio Ramos <sergio@yld.io>
 description: Yarn cache list will print out every cached package
 inputs:

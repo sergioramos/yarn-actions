@@ -1,4 +1,4 @@
-name: yarn workspace workspace
+name: yarn workspace install
 author: Sérgio Ramos <sergio@yld.io>
 description: Yarn install is used to install all dependencies for a project
 inputs:

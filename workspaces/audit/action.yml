@@ -1,4 +1,4 @@
-name: yarn workspaces workspaces
+name: yarn workspaces audit
 author: Sérgio Ramos <sergio@yld.io>
 description: Checks for known security issues with the installed packages
 inputs:

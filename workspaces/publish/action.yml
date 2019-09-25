@@ -1,4 +1,4 @@
-name: yarn workspaces workspaces
+name: yarn workspaces publish
 author: Sérgio Ramos <sergio@yld.io>
 description: Publishes a package to the npm registry
 inputs:

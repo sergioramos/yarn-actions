@@ -1,4 +1,4 @@
-name: yarn workspace add
+name: yarn workspace tag add
 author: Sérgio Ramos <sergio@yld.io>
 inputs:
   version:

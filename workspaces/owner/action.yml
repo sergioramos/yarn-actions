@@ -1,4 +1,4 @@
-name: yarn workspaces workspaces
+name: yarn workspaces owner
 author: Sérgio Ramos <sergio@yld.io>
 description: Manages package owners
 inputs:

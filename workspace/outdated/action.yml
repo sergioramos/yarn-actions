@@ -1,4 +1,4 @@
-name: yarn workspace workspace
+name: yarn workspace outdated
 author: Sérgio Ramos <sergio@yld.io>
 description: Checks for outdated package dependencies
 inputs:

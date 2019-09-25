@@ -28,7 +28,8 @@ const parseInputs = (inputs = {}) => {
 };
 
 const handleCommand = async (cmd, parent = []) => {
-  const { name, description, cwd, yml = {} } = cmd;
+  const name = parent.concat(cmd.name).filter(Boolean);
+  const { description, cwd, yml = {} } = cmd;
   const { commands = [], inputs: cmdInputs, recursive } = cmd;
 
   const allInputs = Object.assign({}, gInputs || {}, cmdInputs || {});
@@ -44,7 +45,7 @@ const handleCommand = async (cmd, parent = []) => {
 
   await writeFile(
     join(cwd, 'manifest.json'),
-    stringify({ name: parent.concat(name).filter(Boolean), inputs }, null, 2),
+    stringify({ name, inputs }, null, 2),
   );
 
   const actionjs = await readFile(join(__dirname, 'action.tmpl.js'), 'utf-8');
@@ -53,28 +54,11 @@ const handleCommand = async (cmd, parent = []) => {
     actionjs.replace('<%handler%>', relative(cwd, join(ROOT, '_handler'))),
   );
 
-  await Execa(
-    'ncc',
-    [
-      'build',
-      join(cwd, 'index.js'),
-      '--out',
-      cwd,
-      '--source-map',
-      '--external',
-      relative(cwd, join(ROOT, '_handler')),
-    ],
-    {
-      stdio: 'inherit',
-      preferLocal: true,
-    },
-  );
-
   await write(
     join(yml.path || cwd, 'action.yml'),
     parse(
       stringify({
-        name: yml.name || `yarn ${parent.concat(name).join(' ')}`,
+        name: yml.name || `yarn ${name.join(' ')}`,
         author,
         description: yml.description || description,
         inputs: parseInputs(inputs),
@@ -98,8 +82,6 @@ const handleCommand = async (cmd, parent = []) => {
     ),
   );
 
-  await Del(join(cwd, 'manifest.json'));
-
   await ForEach(Object.keys(commands), cmd => {
     return handleCommand(
       {
@@ -107,7 +89,7 @@ const handleCommand = async (cmd, parent = []) => {
         ...commands[cmd],
         cwd: join(cwd, cmd),
       },
-      [name],
+      name,
     );
   });
 
@@ -115,15 +97,15 @@ const handleCommand = async (cmd, parent = []) => {
     const { ignore = [] } = recursive;
 
     await ForEach(
-      Object.keys(gCommands).filter(name => !ignore.includes(name)),
+      Object.keys(gCommands).filter(cmd => !ignore.includes(cmd)),
       cmd => {
         return handleCommand(
           {
-            name,
+            name: cmd,
             ...gCommands[cmd],
             cwd: join(cwd, cmd),
           },
-          [name],
+          name,
         );
       },
     );

@@ -1,4 +1,4 @@
-name: yarn workspaces workspaces
+name: yarn workspaces node
 author: Sérgio Ramos <sergio@yld.io>
 description: >-
   Runs Node with the same version that the one used by Yarn itself, and by

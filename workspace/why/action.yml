@@ -1,4 +1,4 @@
-name: yarn workspace workspace
+name: yarn workspace why
 author: Sérgio Ramos <sergio@yld.io>
 description: >-
   Identifies why a package has been installed, detailing which other packages

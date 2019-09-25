@@ -1,4 +1,4 @@
-name: yarn workspace workspace
+name: yarn workspace unplug
 author: Sérgio Ramos <sergio@yld.io>
 description: >-
   Temporarily copies a package (with an optional @range suffix) outside of the

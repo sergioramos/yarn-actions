@@ -1,4 +1,4 @@
-name: yarn workspaces workspaces
+name: yarn workspaces info
 author: Sérgio Ramos <sergio@yld.io>
 description: Shows information about a package
 inputs:

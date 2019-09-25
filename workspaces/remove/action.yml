@@ -1,4 +1,4 @@
-name: yarn workspaces workspaces
+name: yarn workspaces remove
 author: Sérgio Ramos <sergio@yld.io>
 description: >-
   Removes a package from your direct dependencies updating your package.json and

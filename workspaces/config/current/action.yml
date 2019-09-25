@@ -1,4 +1,4 @@
-name: yarn workspaces current
+name: yarn workspaces config current
 author: Sérgio Ramos <sergio@yld.io>
 inputs:
   version:

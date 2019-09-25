@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@actions/core": "^1.1.1",
-    "apr-main": "^4.0.3",
     "execa": "^2.0.4",
     "force-array": "^3.1.0",
     "lodash.isstring": "^4.0.1",

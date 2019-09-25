@@ -1,4 +1,4 @@
-name: yarn workspaces destroy
+name: yarn workspaces team destroy
 author: Sérgio Ramos <sergio@yld.io>
 inputs:
   version:

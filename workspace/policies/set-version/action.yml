@@ -1,4 +1,4 @@
-name: yarn workspace set-version
+name: yarn workspace policies set-version
 author: Sérgio Ramos <sergio@yld.io>
 inputs:
   version:

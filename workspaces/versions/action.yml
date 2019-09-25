@@ -1,4 +1,4 @@
-name: yarn workspaces workspaces
+name: yarn workspaces versions
 author: Sérgio Ramos <sergio@yld.io>
 description: >-
   Displays version information of currently installed Yarn, Node.js, and its

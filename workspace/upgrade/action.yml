@@ -1,4 +1,4 @@
-name: yarn workspace workspace
+name: yarn workspace upgrade
 author: Sérgio Ramos <sergio@yld.io>
 description: Upgrades packages to their latest version based on the specified range
 inputs:

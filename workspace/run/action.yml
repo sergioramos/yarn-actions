@@ -1,4 +1,4 @@
-name: yarn workspace workspace
+name: yarn workspace run
 author: Sérgio Ramos <sergio@yld.io>
 description: Runs a defined package script
 inputs:

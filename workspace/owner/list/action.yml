@@ -1,4 +1,4 @@
-name: yarn workspace list
+name: yarn workspace owner list
 author: Sérgio Ramos <sergio@yld.io>
 inputs:
   version:

@@ -1,4 +1,4 @@
-name: yarn workspaces delete
+name: yarn workspaces config delete
 author: Sérgio Ramos <sergio@yld.io>
 inputs:
   version:

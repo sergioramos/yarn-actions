@@ -1,4 +1,4 @@
-name: yarn workspace workspace
+name: yarn workspace config
 author: Sérgio Ramos <sergio@yld.io>
 description: Manages the yarn configuration files
 inputs:

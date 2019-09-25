@@ -1,4 +1,4 @@
-name: yarn workspace create
+name: yarn workspace team create
 author: Sérgio Ramos <sergio@yld.io>
 inputs:
   version:

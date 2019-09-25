@@ -1,4 +1,4 @@
-name: yarn workspaces workspaces
+name: yarn workspaces global
 author: Sérgio Ramos <sergio@yld.io>
 description: Installs packages globally on your operating system
 inputs:

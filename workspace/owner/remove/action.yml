@@ -1,4 +1,4 @@
-name: yarn workspace remove
+name: yarn workspace owner remove
 author: Sérgio Ramos <sergio@yld.io>
 inputs:
   version:

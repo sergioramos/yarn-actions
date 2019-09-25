@@ -1,4 +1,4 @@
-name: yarn workspaces workspaces
+name: yarn workspaces pack
 author: Sérgio Ramos <sergio@yld.io>
 description: Creates a compressed gzip archive of package dependencies
 inputs:

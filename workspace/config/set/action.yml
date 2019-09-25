@@ -1,4 +1,4 @@
-name: yarn workspace set
+name: yarn workspace config set
 author: Sérgio Ramos <sergio@yld.io>
 inputs:
   version:

@@ -1,4 +1,4 @@
-name: yarn workspace workspace
+name: yarn workspace generate-lock-entry
 author: Sérgio Ramos <sergio@yld.io>
 description: Generates a lock file entry
 inputs:

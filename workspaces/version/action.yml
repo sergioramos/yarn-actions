@@ -1,4 +1,4 @@
-name: yarn workspaces workspaces
+name: yarn workspaces version
 author: Sérgio Ramos <sergio@yld.io>
 description: Update the version of your package via the command line
 inputs:

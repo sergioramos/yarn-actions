@@ -1,4 +1,4 @@
-name: yarn workspaces workspaces
+name: yarn workspaces create
 author: Sérgio Ramos <sergio@yld.io>
 description: Creates new projects from any create-* starter kits
 inputs:

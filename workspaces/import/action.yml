@@ -1,4 +1,4 @@
-name: yarn workspaces workspaces
+name: yarn workspaces import
 author: Sérgio Ramos <sergio@yld.io>
 description: >-
   Generates yarn.lock from an npm package-lock.json file or an existing
