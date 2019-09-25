@@ -1,4 +1,4 @@
-name: yarn current
+name: yarn config current
 author: Sérgio Ramos <sergio@yld.io>
 inputs:
   version:

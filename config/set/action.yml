@@ -1,4 +1,4 @@
-name: yarn set
+name: yarn config set
 author: Sérgio Ramos <sergio@yld.io>
 inputs:
   version:

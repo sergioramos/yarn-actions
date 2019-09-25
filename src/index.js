@@ -8,7 +8,7 @@ const { write } = require('node-yaml');
 const { join, relative } = require('path');
 
 const { author } = require('../package.json');
-const { commands, inputs: globalInputs } = require('./manifest.json');
+const { commands: gCommands, inputs: gInputs } = require('./manifest.json');
 const ROOT = join(__dirname, '..');
 const { parse, stringify } = JSON;
 
@@ -28,10 +28,10 @@ const parseInputs = (inputs = {}) => {
 };
 
 const handleCommand = async (cmd, parent = []) => {
-  const { name, description, cwd, ext, yml = {} } = cmd;
-  const { commands = [], inputs: cmdInputs } = cmd;
+  const { name, description, cwd, yml = {} } = cmd;
+  const { commands = [], inputs: cmdInputs, recursive } = cmd;
 
-  const allInputs = Object.assign({}, globalInputs || {}, cmdInputs || {});
+  const allInputs = Object.assign({}, gInputs || {}, cmdInputs || {});
 
   const inputs = Object.keys(allInputs).reduce((inputs = {}, name) => {
     return Object.assign(inputs, {
@@ -62,7 +62,7 @@ const handleCommand = async (cmd, parent = []) => {
       cwd,
       '--source-map',
       '--external',
-      ext,
+      relative(cwd, join(ROOT, '_handler')),
     ],
     {
       stdio: 'inherit',
@@ -74,7 +74,7 @@ const handleCommand = async (cmd, parent = []) => {
     join(yml.path || cwd, 'action.yml'),
     parse(
       stringify({
-        name: yml.name || `yarn ${name}`,
+        name: yml.name || `yarn ${parent.concat(name).join(' ')}`,
         author,
         description: yml.description || description,
         inputs: parseInputs(inputs),
@@ -105,12 +105,29 @@ const handleCommand = async (cmd, parent = []) => {
       {
         name: cmd,
         ...commands[cmd],
-        ext: '../../_handler',
         cwd: join(cwd, cmd),
       },
       [name],
     );
   });
+
+  if (recursive) {
+    const { ignore = [] } = recursive;
+
+    await ForEach(
+      Object.keys(gCommands).filter(name => !ignore.includes(name)),
+      cmd => {
+        return handleCommand(
+          {
+            name,
+            ...gCommands[cmd],
+            cwd: join(cwd, cmd),
+          },
+          [name],
+        );
+      },
+    );
+  }
 };
 
 Main(async () => {
@@ -131,21 +148,19 @@ Main(async () => {
     },
   );
 
-  await ForEach(Object.keys(commands), name => {
+  await ForEach(Object.keys(gCommands), name => {
     return handleCommand({
       name,
-      ...commands[name],
-      ext: '../_handler',
+      ...gCommands[name],
       cwd: join(__dirname, '..', name),
     });
   });
 
-  const dflt = Object.keys(commands).find(name => commands[name].default);
+  const dflt = Object.keys(gCommands).find(name => gCommands[name].default);
   return handleCommand({
-    ...commands[dflt],
+    ...gCommands[dflt],
     name: dflt,
     cwd: join(__dirname, '..', '_fallback'),
-    ext: '../_handler',
     yml: {
       name: 'yarn actions',
       description: '📦🐈 Fast, reliable, and secure dependency management',

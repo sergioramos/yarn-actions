@@ -452,7 +452,7 @@
     "info": {
       "description": "Shows information about a package",
       "inputs": {
-        "package": {
+        "pkg": {
           "anonymous": true,
           "required": true
         }
@@ -504,6 +504,419 @@
           "description": "Filter dependencies by pattern",
           "required": false
         }
+      }
+    },
+    "node": {
+      "description": "Runs Node with the same version that the one used by Yarn itself, and by default from the project root",
+      "inputs": {
+        "into": {
+          "description": "Sets the cwd to the specified location",
+          "required": false
+        }
+      }
+    },
+    "outdated": {
+      "description": "Checks for outdated package dependencies"
+    },
+    "owner": {
+      "description": "Manages package owners",
+      "commands": {
+        "add": {
+          "inputs": {
+            "user": {
+              "required": true
+            },
+            "pkg": {
+              "required": false,
+              "anonymous": true
+            }
+          }
+        },
+        "remove": {
+          "inputs": {
+            "user": {
+              "required": true
+            },
+            "pkg": {
+              "required": false,
+              "anonymous": true
+            }
+          }
+        },
+        "list": {
+          "inputs": {
+            "user": {
+              "required": true
+            },
+            "pkg": {
+              "required": false,
+              "anonymous": true
+            }
+          }
+        }
+      }
+    },
+    "pack": {
+      "description": "Creates a compressed gzip archive of package dependencies",
+      "inputs": {
+        "filename": {
+          "required": true
+        }
+      }
+    },
+    "policies": {
+      "commands": {
+        "set-version": {}
+      }
+    },
+    "publish": {
+      "description": "Publishes a package to the npm registry",
+      "inputs": {
+        "tarball": {
+          "required": false,
+          "anonymous": true
+        },
+        "folder": {
+          "required": false,
+          "anonymous": true
+        },
+        "new-version": {
+          "description": "new version",
+          "required": false
+        },
+        "major": {
+          "description": "auto-increment major version number",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "minor": {
+          "description": "auto-increment minor version number",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "patch": {
+          "description": "auto-increment patch version number",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "premajor": {
+          "description": "auto-increment premajor version number",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "preminor": {
+          "description": "auto-increment preminor version number",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "prepatch": {
+          "description": "auto-increment prepatch version number",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "prerelease": {
+          "description": "auto-increment prerelease version number",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "preid": {
+          "description": "add a custom identifier to the prerelease",
+          "required": false
+        },
+        "message": {
+          "required": false
+        },
+        "no-git-tag-version": {
+          "description": "no git tag version",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "no-commit-hooks": {
+          "description": "bypass git hooks when committing new version",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "access": {
+          "required": false,
+          "flag": true
+        },
+        "tag": {
+          "required": false
+        }
+      }
+    },
+    "remove": {
+      "description": "Removes a package from your direct dependencies updating your package.json and yarn.lock",
+      "inputs": {
+        "pkg": {
+          "required": false,
+          "anonymous": true
+        },
+        "ignore-workspace-root-check": {
+          "description": "required to run yarn remove inside a workspace root",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        }
+      }
+    },
+    "run": {
+      "description": "Runs a defined package script",
+      "inputs": {
+        "script": {
+          "required": false,
+          "anonymous": true
+        }
+      }
+    },
+    "tag": {
+      "description": "Add, remove, or list tags on a package",
+      "commands": {
+        "add": {
+          "inputs": {
+            "pkg": {
+              "required": true,
+              "anonymous": true
+            },
+            "tag": {
+              "required": false,
+              "anonymous": true
+            }
+          }
+        },
+        "remove": {
+          "inputs": {
+            "pkg": {
+              "required": true,
+              "anonymous": true
+            },
+            "tag": {
+              "required": true,
+              "anonymous": true
+            }
+          }
+        },
+        "list": {
+          "inputs": {
+            "pkg": {
+              "required": false,
+              "anonymous": true
+            }
+          }
+        }
+      }
+    },
+    "team": {
+      "description": "Maintain team memberships",
+      "commands": {
+        "create": {
+          "inputs": {
+            "name": {
+              "required": true,
+              "anonymous": true
+            }
+          }
+        },
+        "destroy": {
+          "inputs": {
+            "name": {
+              "required": true,
+              "anonymous": true
+            }
+          }
+        },
+        "add": {
+          "inputs": {
+            "name": {
+              "required": true,
+              "anonymous": true
+            },
+            "user": {
+              "required": true,
+              "anonymous": true
+            }
+          }
+        },
+        "remove": {
+          "inputs": {
+            "name": {
+              "required": true,
+              "anonymous": true
+            },
+            "user": {
+              "required": true,
+              "anonymous": true
+            }
+          }
+        },
+        "list": {
+          "inputs": {
+            "name": {
+              "required": true,
+              "anonymous": true
+            }
+          }
+        }
+      }
+    },
+    "unlink": {
+      "description": "Unlink a previously created symlink for a package",
+      "inputs": {
+        "pkg": {
+          "required": false,
+          "anonymous": true
+        }
+      }
+    },
+    "unplug": {
+      "description": "Temporarily copies a package (with an optional @range suffix) outside of the global cache for debugging purposes",
+      "inputs": {
+        "pkg": {
+          "required": false,
+          "anonymous": true
+        }
+      }
+    },
+    "upgrade": {
+      "description": "Upgrades packages to their latest version based on the specified range",
+      "inputs": {
+        "scope": {
+          "description": "upgrade packages under the specified scope",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "latest": {
+          "description": "list the latest version of packages, ignoring version ranges in package.json",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "exact": {
+          "description": "install exact version. Only used when --latest is specified.",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "pattern": {
+          "description": "upgrade packages that match pattern",
+          "required": false
+        },
+        "tilde": {
+          "description": "install most recent release with the same minor version. Only used when --latest is specified.",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "caret": {
+          "description": "install most recent release with the same major version. Only used when --latest is specified.",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "audit": {
+          "description": "run vulnerability audit on installed packages",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        }
+      }
+    },
+    "version": {
+      "description": "Update the version of your package via the command line",
+      "inputs": {
+        "major": {
+          "description": "auto-increment major version number",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "minor": {
+          "description": "auto-increment minor version number",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "patch": {
+          "description": "auto-increment patch version number",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "premajor": {
+          "description": "auto-increment premajor version number",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "preminor": {
+          "description": "auto-increment preminor version number",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "prepatch": {
+          "description": "auto-increment prepatch version number",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "prerelease": {
+          "description": "auto-increment prerelease version number",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "preid": {
+          "description": "add a custom identifier to the prerelease",
+          "required": false
+        },
+        "message": {
+          "required": false
+        },
+        "no-git-tag-version": {
+          "description": "no git tag version",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        },
+        "no-commit-hooks": {
+          "description": "bypass git hooks when committing new version",
+          "required": false,
+          "dflt": false,
+          "flag": true
+        }
+      }
+    },
+    "versions": {
+      "description": "Displays version information of currently installed Yarn, Node.js, and its dependencies"
+    },
+    "why": {
+      "description": "Identifies why a package has been installed, detailing which other packages depend on it",
+      "inputs": {
+        "pkg": {
+          "required": false,
+          "anonymous": true
+        }
+      }
+    },
+    "workspace": {
+      "recursive": {
+        "ignore": ["workspace", "workspaces"]
+      }
+    },
+    "workspaces": {
+      "recursive": {
+        "ignore": ["workspace", "workspaces"]
       }
     }
   }

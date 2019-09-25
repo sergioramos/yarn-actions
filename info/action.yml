@@ -168,7 +168,7 @@ inputs:
     description: output usage information
     required: false
     default: false
-  package:
+  pkg:
     required: true
 outputs:
   stdout:

@@ -1,0 +1,189 @@
+name: yarn workspace workspace
+author: Sérgio Ramos <sergio@yld.io>
+description: Interactively creates or updates a package.json file
+inputs:
+  version:
+    description: output the version number
+    required: false
+    default: false
+  no-default-rc:
+    description: prevent Yarn from automatically detecting yarnrc and npmrc files
+    required: false
+    default: false
+  use-yarnrc:
+    description: 'specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc)'
+    required: false
+  verbose:
+    description: output verbose messages on internal operations
+    required: false
+    default: false
+  offline:
+    description: >-
+      trigger an error if any required dependencies are not available in local
+      cache
+    required: false
+    default: false
+  prefer-offline:
+    description: use network only if dependencies are not available in local cache
+    required: false
+    default: false
+  enable-pnp:
+    description: enable the Plug'n'Play installation
+    required: false
+    default: false
+  disable-pnp:
+    description: disable the Plug'n'Play installation
+    required: false
+    default: false
+  strict-semver:
+    required: false
+    default: false
+  json:
+    required: false
+    default: false
+  ignore-scripts:
+    required: false
+    default: false
+  har:
+    required: false
+    default: false
+  ignore-platform:
+    required: false
+    default: false
+  ignore-engines:
+    required: false
+    default: false
+  ignore-optional:
+    required: false
+    default: false
+  force:
+    required: false
+    default: false
+  skip-integrity-check:
+    required: false
+    default: false
+  check-files:
+    required: false
+    default: false
+  no-bin-links:
+    required: false
+    default: false
+  flat:
+    required: false
+    default: false
+  production:
+    required: false
+    default: false
+  no-lockfile:
+    description: don't read or generate a lockfile
+    required: false
+    default: false
+  non-interactive:
+    description: do not show interactive prompts
+    required: false
+    default: true
+  pure-lockfile:
+    description: don't generate a lockfile
+    required: false
+    default: false
+  frozen-lockfile:
+    description: don't generate a lockfile and fail if an update is needed
+    required: false
+    default: false
+  update-checksums:
+    description: update package checksums from current repository
+    required: false
+    default: false
+  link-duplicates:
+    description: create hardlinks to the repeated modules in node_modules
+    required: false
+    default: false
+  link-folder:
+    description: specify a custom folder to store global links
+    required: false
+  global-folder:
+    description: specify a custom folder to store global packages
+    required: false
+  modules-folder:
+    description: >-
+      rather than installing modules into the node_modules folder relative to
+      the cwd, output them here
+    required: false
+  preferred-cache-folder:
+    description: specify a custom folder to store the yarn cache if possible
+    required: false
+  cache-folder:
+    description: specify a custom folder that must be used to store the yarn cache
+    required: false
+  mutex:
+    description: use a mutex to ensure only one yarn instance is executing
+    required: false
+  no-emoji:
+    description: disabled emoji in output
+    required: false
+    default: false
+  silent:
+    description: >-
+      skip Yarn console logs, other types of logs (script output) will be
+      printed
+    required: false
+    default: false
+  cwd:
+    description: working directory to use
+    required: false
+  proxy:
+    required: false
+  https-proxy:
+    required: false
+  registry:
+    description: override configuration registry
+    required: false
+  no-progress:
+    description: disable progress bar
+    required: false
+    default: false
+  network-concurrency:
+    description: maximum number of concurrent network requests
+    required: false
+  network-timeout:
+    description: TCP timeout for network requests
+    required: false
+  no-scripts-prepend-node-path:
+    description: don't prepend the node executable dir to the PATH in scripts
+    required: false
+  no-node-version-check:
+    description: do not warn when using a potentially unsupported Node version
+    required: false
+    default: false
+  focus:
+    description: >-
+      Focus on a single workspace by installing remote copies of its sibling
+      workspaces
+    required: false
+    default: false
+  otp:
+    description: one-time password for two factor authentication
+    required: false
+  help:
+    description: output usage information
+    required: false
+    default: false
+  'yes':
+    description: use default options
+    required: false
+    default: false
+  private:
+    description: use default options and private true
+    required: false
+    default: false
+outputs:
+  stdout:
+    description: process stdout
+  stderr:
+    description: process stderr
+runs:
+  using: node12
+  main: index.js
+branding:
+  icon: package
+  color: blue
