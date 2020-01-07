@@ -10,6 +10,9 @@ jobs:
     - uses: ./
       with:
         frozen-lockfile: true
+    - uses: ./run
+      with:
+        script: lint
     - uses: ./config/set
       with:
         key: a
@@ -17,3 +20,9 @@ jobs:
     - uses: ./config/get
       with:
         input: a
+    - uses: ./add
+      with:
+        silent: true
+        no-progress: true
+        dev: true
+        packages: eslint

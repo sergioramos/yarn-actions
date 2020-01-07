@@ -6,6 +6,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "version"
     },
     "no-default-rc": {
@@ -13,11 +14,13 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "no-default-rc"
     },
     "use-yarnrc": {
       "description": "specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc)",
       "required": false,
+      "global": true,
       "name": "use-yarnrc"
     },
     "verbose": {
@@ -25,6 +28,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "verbose"
     },
     "offline": {
@@ -32,6 +36,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "offline"
     },
     "prefer-offline": {
@@ -39,6 +44,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "prefer-offline"
     },
     "enable-pnp": {
@@ -46,6 +52,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "enable-pnp"
     },
     "disable-pnp": {
@@ -53,12 +60,14 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "disable-pnp"
     },
     "strict-semver": {
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "strict-semver"
     },
     "json": {
@@ -66,6 +75,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "json"
     },
     "ignore-scripts": {
@@ -73,6 +83,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "ignore-scripts"
     },
     "har": {
@@ -80,6 +91,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "har"
     },
     "ignore-platform": {
@@ -87,6 +99,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "ignore-platform"
     },
     "ignore-engines": {
@@ -94,6 +107,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "ignore-engines"
     },
     "ignore-optional": {
@@ -101,6 +115,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "ignore-optional"
     },
     "force": {
@@ -108,6 +123,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "force"
     },
     "skip-integrity-check": {
@@ -115,6 +131,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "skip-integrity-check"
     },
     "check-files": {
@@ -122,6 +139,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "check-files"
     },
     "no-bin-links": {
@@ -129,6 +147,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "no-bin-links"
     },
     "flat": {
@@ -136,12 +155,14 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "flat"
     },
     "production": {
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "production"
     },
     "no-lockfile": {
@@ -149,6 +170,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "no-lockfile"
     },
     "non-interactive": {
@@ -156,6 +178,7 @@
       "required": false,
       "dflt": true,
       "flag": true,
+      "global": true,
       "name": "non-interactive"
     },
     "pure-lockfile": {
@@ -163,6 +186,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "pure-lockfile"
     },
     "frozen-lockfile": {
@@ -170,6 +194,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "frozen-lockfile"
     },
     "update-checksums": {
@@ -177,6 +202,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "update-checksums"
     },
     "link-duplicates": {
@@ -184,36 +210,43 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "link-duplicates"
     },
     "link-folder": {
       "description": "specify a custom folder to store global links",
       "required": false,
+      "global": true,
       "name": "link-folder"
     },
     "global-folder": {
       "description": "specify a custom folder to store global packages",
       "required": false,
+      "global": true,
       "name": "global-folder"
     },
     "modules-folder": {
       "description": "rather than installing modules into the node_modules folder relative to the cwd, output them here",
       "required": false,
+      "global": true,
       "name": "modules-folder"
     },
     "preferred-cache-folder": {
       "description": "specify a custom folder to store the yarn cache if possible",
       "required": false,
+      "global": true,
       "name": "preferred-cache-folder"
     },
     "cache-folder": {
       "description": "specify a custom folder that must be used to store the yarn cache",
       "required": false,
+      "global": true,
       "name": "cache-folder"
     },
     "mutex": {
       "description": "use a mutex to ensure only one yarn instance is executing",
       "required": false,
+      "global": true,
       "name": "mutex"
     },
     "no-emoji": {
@@ -221,6 +254,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "no-emoji"
     },
     "silent": {
@@ -228,24 +262,29 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "silent"
     },
     "cwd": {
       "description": "working directory to use",
       "required": false,
+      "global": true,
       "name": "cwd"
     },
     "proxy": {
       "required": false,
+      "global": true,
       "name": "proxy"
     },
     "https-proxy": {
       "required": false,
+      "global": true,
       "name": "https-proxy"
     },
     "registry": {
       "description": "override configuration registry",
       "required": false,
+      "global": true,
       "name": "registry"
     },
     "no-progress": {
@@ -253,20 +292,24 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "no-progress"
     },
     "network-concurrency": {
       "description": "maximum number of concurrent network requests",
       "required": false,
+      "global": true,
       "name": "network-concurrency"
     },
     "network-timeout": {
       "description": "TCP timeout for network requests",
       "required": false,
+      "global": true,
       "name": "network-timeout"
     },
     "no-scripts-prepend-node-path": {
       "description": "don't prepend the node executable dir to the PATH in scripts",
+      "global": true,
       "name": "no-scripts-prepend-node-path"
     },
     "no-node-version-check": {
@@ -274,6 +317,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "no-node-version-check"
     },
     "focus": {
@@ -281,11 +325,13 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "focus"
     },
     "otp": {
       "description": "one-time password for two factor authentication",
       "required": false,
+      "global": true,
       "name": "otp"
     },
     "help": {
@@ -293,6 +339,7 @@
       "required": false,
       "dflt": false,
       "flag": true,
+      "global": true,
       "name": "help"
     }
   }

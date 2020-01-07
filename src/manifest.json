@@ -5,248 +5,295 @@
       "description": "output the version number",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "no-default-rc": {
       "description": "prevent Yarn from automatically detecting yarnrc and npmrc files",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "use-yarnrc": {
       "description": "specifies a yarnrc file that Yarn should use (.yarnrc only, not .npmrc)",
-      "required": false
+      "required": false,
+      "global": true
     },
     "verbose": {
       "description": "output verbose messages on internal operations",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "offline": {
       "description": "trigger an error if any required dependencies are not available in local cache",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "prefer-offline": {
       "description": "use network only if dependencies are not available in local cache",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "enable-pnp": {
       "description": "enable the Plug'n'Play installation",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "disable-pnp": {
       "description": "disable the Plug'n'Play installation",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "strict-semver": {
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "json": {
       "descriptions": "format Yarn log messages as lines of JSON (see jsonlines.org)",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "ignore-scripts": {
       "descriptions": "don't run lifecycle scripts",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "har": {
       "descriptions": "save HAR output of network traffic",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "ignore-platform": {
       "descriptions": "ignore platform checks",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "ignore-engines": {
       "descriptions": "ignore engines check",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "ignore-optional": {
       "descriptions": "ignore optional dependencies",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "force": {
       "descriptions": "install and build packages even if they were built before, overwrite lockfile",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "skip-integrity-check": {
       "descriptions": "run install without checking if node_modules is installed",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "check-files": {
       "descriptions": "install will verify file tree of packages for consistency",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "no-bin-links": {
       "descriptions": "don't generate bin links when setting up packages",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "flat": {
       "descriptions": "only allow one version of a package",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "production": {
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "no-lockfile": {
       "description": "don't read or generate a lockfile",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "non-interactive": {
       "description": "do not show interactive prompts",
       "required": false,
       "dflt": true,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "pure-lockfile": {
       "description": "don't generate a lockfile",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "frozen-lockfile": {
       "description": "don't generate a lockfile and fail if an update is needed",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "update-checksums": {
       "description": "update package checksums from current repository",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "link-duplicates": {
       "description": "create hardlinks to the repeated modules in node_modules",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "link-folder": {
       "description": "specify a custom folder to store global links",
-      "required": false
+      "required": false,
+      "global": true
     },
     "global-folder": {
       "description": "specify a custom folder to store global packages",
-      "required": false
+      "required": false,
+      "global": true
     },
     "modules-folder": {
       "description": "rather than installing modules into the node_modules folder relative to the cwd, output them here",
-      "required": false
+      "required": false,
+      "global": true
     },
     "preferred-cache-folder": {
       "description": "specify a custom folder to store the yarn cache if possible",
-      "required": false
+      "required": false,
+      "global": true
     },
     "cache-folder": {
       "description": "specify a custom folder that must be used to store the yarn cache",
-      "required": false
+      "required": false,
+      "global": true
     },
     "mutex": {
       "description": "use a mutex to ensure only one yarn instance is executing",
-      "required": false
+      "required": false,
+      "global": true
     },
     "no-emoji": {
       "description": "disabled emoji in output",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "silent": {
       "description": "skip Yarn console logs, other types of logs (script output) will be printed",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "cwd": {
       "description": "working directory to use",
-      "required": false
+      "required": false,
+      "global": true
     },
     "proxy": {
-      "required": false
+      "required": false,
+      "global": true
     },
     "https-proxy": {
-      "required": false
+      "required": false,
+      "global": true
     },
     "registry": {
       "description": "override configuration registry",
-      "required": false
+      "required": false,
+      "global": true
     },
     "no-progress": {
       "description": "disable progress bar",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "network-concurrency": {
       "description": "maximum number of concurrent network requests",
-      "required": false
+      "required": false,
+      "global": true
     },
     "network-timeout": {
       "description": "TCP timeout for network requests",
-      "required": false
+      "required": false,
+      "global": true
     },
     "no-scripts-prepend-node-path": {
-      "description": "don't prepend the node executable dir to the PATH in scripts"
+      "description": "don't prepend the node executable dir to the PATH in scripts",
+      "global": true
     },
     "no-node-version-check": {
       "description": "do not warn when using a potentially unsupported Node version",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "focus": {
       "description": "Focus on a single workspace by installing remote copies of its sibling workspaces",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     },
     "otp": {
       "description": "one-time password for two factor authentication",
-      "required": false
+      "required": false,
+      "global": true
     },
     "help": {
       "description": "output usage information",
       "required": false,
       "dflt": false,
-      "flag": true
+      "flag": true,
+      "global": true
     }
   },
   "commands": {

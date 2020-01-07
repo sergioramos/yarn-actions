@@ -12716,21 +12716,39 @@ const handleAnonymousInput = (args = [], input) => {
 };
 
 module.exports = async ({ name, inputs }) => {
-  const args = ForceArray(
+  const localArgs = ForceArray(
     Object.values(inputs)
+      .filter(({ global }) => !global)
       .filter(({ anonymous }) => !anonymous)
       .reduce(handleNamedInput, []),
   );
 
-  const anonymous = ForceArray(
+  const localAnonymous = ForceArray(
     Object.values(inputs)
+      .filter(({ global }) => !global)
       .filter(({ anonymous }) => anonymous)
       .reduce(handleAnonymousInput, []),
   );
 
-  const command = ForceArray(name)
-    .concat(anonymous)
-    .concat(args);
+  const globalArgs = ForceArray(
+    Object.values(inputs)
+      .filter(({ global }) => global)
+      .filter(({ anonymous }) => !anonymous)
+      .reduce(handleNamedInput, []),
+  );
+
+  const globalAnonymous = ForceArray(
+    Object.values(inputs)
+      .filter(({ global }) => global)
+      .filter(({ anonymous }) => anonymous)
+      .reduce(handleAnonymousInput, []),
+  );
+
+  const command = globalAnonymous
+    .concat(globalArgs)
+    .concat(ForceArray(name))
+    .concat(localAnonymous)
+    .concat(localArgs);
 
   console.log('yarn', ...command);
   const { exitCode, stdout, stderr } = await Execa('yarn', command, {
