@@ -49,9 +49,13 @@ const handleCommand = async (cmd, parent = []) => {
   );
 
   const actionjs = await readFile(join(__dirname, 'action.tmpl.js'), 'utf-8');
+
   await writeFile(
     join(cwd, 'index.js'),
-    actionjs.replace('<%handler%>', relative(cwd, join(ROOT, '_handler'))),
+    actionjs.replace(
+      '<%handler%>',
+      relative(cwd, join(ROOT, yml.handler || '_handler')),
+    ),
   );
 
   await write(
@@ -114,6 +118,7 @@ const handleCommand = async (cmd, parent = []) => {
 
 Main(async () => {
   await Del(join(__dirname, '../_handler'));
+  await Del(join(__dirname, '../_setup'));
 
   await Execa(
     'ncc',
@@ -122,6 +127,21 @@ Main(async () => {
       join(__dirname, 'handler.js'),
       '--out',
       join(__dirname, '../_handler'),
+      '--source-map',
+    ],
+    {
+      stdio: 'inherit',
+      preferLocal: true,
+    },
+  );
+
+  await Execa(
+    'ncc',
+    [
+      'build',
+      join(__dirname, 'setup.js'),
+      '--out',
+      join(__dirname, '../_setup'),
       '--source-map',
     ],
     {
@@ -139,7 +159,7 @@ Main(async () => {
   });
 
   const dflt = Object.keys(gCommands).find(name => gCommands[name].default);
-  return handleCommand({
+  await handleCommand({
     ...gCommands[dflt],
     name: dflt,
     cwd: join(__dirname, '..', '_fallback'),
@@ -148,6 +168,33 @@ Main(async () => {
       description: '📦🐈 Fast, reliable, and secure dependency management',
       path: join(__dirname, '..'),
       main: '_fallback/index.js',
+    },
+  });
+
+  await handleCommand({
+    name: 'setup',
+    cwd: join(__dirname, '..', 'setup'),
+    inputs: {
+      registry: {
+        required: true,
+        dflt: false,
+        flag: false,
+      },
+      scope: {
+        required: false,
+        dflt: false,
+        flag: false,
+      },
+      token: {
+        required: false,
+        dflt: false,
+        flag: false,
+      },
+    },
+    yml: {
+      name: 'setup .npmrc',
+      path: join(__dirname, '..', 'setup'),
+      handler: '_setup',
     },
   });
 });
