@@ -102,3 +102,4 @@ version/*
 versions/*
 _fallback/*
 _handler/*
+_setup/*

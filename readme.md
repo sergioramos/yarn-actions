@@ -3,7 +3,7 @@
 ## usage
 
 ```yml
-- uses: sergioramos/yarn-actions/install@master
+- uses: sergioramos/yarn-actions/install@v6
   with:
     frozen-lockfile: true
 ```
@@ -11,7 +11,7 @@
 ## output
 
 ```
-Run sergioramos/yarn-actions/install@master
+Run sergioramos/yarn-actions/install@v6
     yarn --non-interactive --frozen-lockfile install
 ```
 
